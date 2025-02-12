@@ -1,12 +1,17 @@
-const express = require("express")
+import express from "express"
 
-const server = express()
+const app = express()
 
-//Rotas
- server.get('/usuario', (request,response) => {
-    
-   console.log(request.query.usuario)
-   return response.send(request.query.usuario)
- });
+ const users = []
 
-server.listen(3000)     
+app.get("/users", (request,response)  => {
+  return response.json(users)
+})
+
+app.post("/users", (request,response) => {
+  console.log(request)
+
+  return response.json({ok: true})
+})
+
+app.listen(3000)
